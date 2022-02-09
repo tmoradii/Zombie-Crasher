@@ -135,6 +135,10 @@ PrefabInstance:
       value: truck_troop_c
       objectReference: {fileID: 0}
     - target: {fileID: 100004, guid: 934f6bb7bed57e04a82ab591da8cf278, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 100004, guid: 934f6bb7bed57e04a82ab591da8cf278, type: 3}
       propertyPath: m_TagString
       value: Player
       objectReference: {fileID: 0}
@@ -217,6 +221,8 @@ MonoBehaviour:
   HorizontalSpeed: 15
   RotationSpeed: 10
   RotationOffset: 12
+  bulletPrefab: {fileID: 2017123623737056620, guid: 7919861581df39f4882fc97c3dcb9704, type: 3}
+  bulletStartPos: {fileID: 667682544}
 --- !u!54 &291706096
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -246,6 +252,41 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 4.422969, y: 3.895406, z: 10.811963}
   m_Center: {x: 0, y: 1.947703, z: 0.00000023841856}
+--- !u!4 &291706100 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 400004, guid: 934f6bb7bed57e04a82ab591da8cf278, type: 3}
+  m_PrefabInstance: {fileID: 291706093}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &667682543
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 667682544}
+  m_Layer: 0
+  m_Name: bollet Start Position
+  m_TagString: bulletStartPos
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &667682544
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 667682543}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 1.8, z: -6.58}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 291706100}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &705507993
 GameObject:
   m_ObjectHideFlags: 0

@@ -8,9 +8,13 @@ public class VehicleController : MonoBehaviour
     public float forwardSpeed = 40f;
     public float HorizontalSpeed = 15f;
     public float RotationSpeed = 8f , RotationOffset = 12f;
+    public GameObject bulletPrefab;
+    public Transform bulletStartPos;
 
     Vector3 speed;
+    Vector3 bulletPos;
     float default_Y_eularAngles;
+    bool isShooted;
 
     // Start is called before the first frame update
     void Awake()
@@ -29,7 +33,11 @@ public class VehicleController : MonoBehaviour
     void Update()
     {
         CheckInput();
-
+        CheckIfShooted();
+        if (isShooted)
+        {
+            ShootBullet();
+        }
     }
 
     private void FixedUpdate()
@@ -50,11 +58,26 @@ public class VehicleController : MonoBehaviour
 
     }
 
+
     void TurnThePlayer(float input)
     {
-        print("rt : " + transform.rotation.y);
+
         transform.rotation = Quaternion.Slerp(transform.rotation, 
             Quaternion.Euler(0f,  default_Y_eularAngles + input * RotationOffset, 0f), Time.deltaTime * RotationSpeed);
+    }
+
+    void CheckIfShooted()
+    {
+        if (Input.GetButtonDown("Fire1"))
+        {
+            isShooted = true;
+        }
+    }
+
+    void ShootBullet()
+    {
+        GameObject bullet = Instantiate(bulletPrefab, bulletStartPos.position, Quaternion.identity);
+        isShooted = false;
     }
 
 }
