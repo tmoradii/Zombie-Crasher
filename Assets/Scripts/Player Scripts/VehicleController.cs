@@ -10,17 +10,22 @@ public class VehicleController : MonoBehaviour
     public float RotationSpeed = 8f , RotationOffset = 12f;
     public GameObject bulletPrefab;
     public Transform bulletStartPos;
+    public ParticleSystem shootFX;
 
     Vector3 speed;
     Vector3 bulletPos;
     float default_Y_eularAngles;
     bool isShooted;
+    AudioSource audioSource;
+
+    VoiceController voiceController;
 
     // Start is called before the first frame update
     void Awake()
     {
         speed = new Vector3(HorizontalSpeed, 0, forwardSpeed);
         body = GetComponent<Rigidbody>();
+        audioSource = GetComponent<AudioSource>();
         default_Y_eularAngles = transform.rotation.eulerAngles.y;
     }
 
@@ -77,6 +82,8 @@ public class VehicleController : MonoBehaviour
     void ShootBullet()
     {
         GameObject bullet = Instantiate(bulletPrefab, bulletStartPos.position, Quaternion.identity);
+        shootFX.Play();
+        audioSource.Play();
         isShooted = false;
     }
 

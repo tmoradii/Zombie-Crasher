@@ -4,8 +4,9 @@ using UnityEngine;
 
 public class Bullet : MonoBehaviour
 {
-    public float bulletForwardSpeed = 2000f;
+    public float bulletForwardSpeed = 2000f;    
     Rigidbody mybody;
+
 
     private void Start()
     {
@@ -15,8 +16,7 @@ public class Bullet : MonoBehaviour
 
     void Move()
     {
-        //play anim
-        print("ff");
+        
         mybody.AddForce(transform.forward* bulletForwardSpeed);
         Invoke("Disapear", 4f);
     }
