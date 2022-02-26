@@ -18,7 +18,7 @@ public class Bullet : MonoBehaviour
     {
         
         mybody.AddForce(transform.forward* bulletForwardSpeed);
-        Invoke("Disapear", 4f);
+        Invoke("Disapear", 2.5f);
     }
 
     void Disapear()
@@ -26,12 +26,9 @@ public class Bullet : MonoBehaviour
         gameObject.SetActive(false);
     }
 
-    private void OnCollisionEnter(Collision collision)
+    private void OnTriggerEnter(Collider collision)
     {
-        if(collision.gameObject.tag != "Player")
-        {
-            //destroy that object
-            //destroy bullet
-        }
+         gameObject.SetActive(false);
     }
+
 }

@@ -10,13 +10,16 @@ public class VehicleController : MonoBehaviour
     public float RotationSpeed = 8f , RotationOffset = 12f;
     public GameObject bulletPrefab;
     public Transform bulletStartPos;
-    public ParticleSystem shootFX;
+    public ParticleSystem shootFX , explosionFX;
+    public AudioClip explosionSound;
+    public AudioClip shootSound;
 
     Vector3 speed;
     Vector3 bulletPos;
     float default_Y_eularAngles;
     bool isShooted;
     AudioSource audioSource;
+
 
     VoiceController voiceController;
 
@@ -83,8 +86,24 @@ public class VehicleController : MonoBehaviour
     {
         GameObject bullet = Instantiate(bulletPrefab, bulletStartPos.position, Quaternion.identity);
         shootFX.Play();
-        audioSource.Play();
+        PlaySound(shootSound);
         isShooted = false;
     }
 
+    private void OnTriggerEnter(Collider other)
+    {
+        if(other.tag == "Obstacle")
+        {
+            other.gameObject.SetActive(false);
+            //decrease health
+            PlaySound(explosionSound);          
+            explosionFX.Play();
+        }
+    }
+
+    void PlaySound(AudioClip clip)
+    {
+        audioSource.clip = explosionSound;
+        audioSource.Play();
+    }
 }
