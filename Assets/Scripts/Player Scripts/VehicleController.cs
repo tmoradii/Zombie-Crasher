@@ -40,6 +40,7 @@ public class VehicleController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        TakeScreenShot();
         CheckInput();
         CheckIfShooted();
         if (isShooted)
@@ -105,5 +106,14 @@ public class VehicleController : MonoBehaviour
     {
         audioSource.clip = explosionSound;
         audioSource.Play();
+    }
+
+    void TakeScreenShot()
+    {
+        if (Input.GetKeyDown(KeyCode.SysReq))
+        {
+            
+            ScreenCapture.CaptureScreenshot("s" + Time.time + ".png");
+        }
     }
 }

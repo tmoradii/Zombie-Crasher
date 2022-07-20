@@ -60,10 +60,16 @@ public  abstract class RandomSpawner : MonoBehaviour
     {
         Vector3 position = Vector3.zero;
         RandomPosition(ref position);
+        var rotation = new Quaternion();
+        
         if (position != Vector3.zero)
         {
             int index = Random.Range(0, Prefabs.Length);
-            var newObject = Instantiate(Prefabs[index], position, Quaternion.identity);
+            var newObject = Instantiate(
+                Prefabs[index], 
+                position, 
+                Prefabs[index].transform.rotation
+                );
             //puting new obstacles in a parent for organization reasons
             newObject.transform.parent = parent.transform;
         }
